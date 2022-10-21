@@ -1,0 +1,7 @@
+
+usage:  algodid create <address>
+
+    Examples:
+
+    > algodid create VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH7LRO45JMJP6UYBIJA
+    

@@ -1,0 +1,8 @@
+
+usage:  algodid <command>
+
+    Supported commands:
+
+    > create: generates a new did for the given Algo address (if not associated with an existing did)
+    > help: prints this command guide or a specific command guide if used with that command
+    
