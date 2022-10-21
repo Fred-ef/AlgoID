@@ -9,7 +9,6 @@ const create = require('./commands/create');
 const HELP_PATH = './help/';
 const HELP_EXT = '.txt';
 const ALLOWED_COMMANDS = ["create"];
-const TEST_ADDR = 'VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH7LRO45JMJP6UYBIJA';     // TODO REMOVE
 
 // ########## FUN DEF ##########
 
