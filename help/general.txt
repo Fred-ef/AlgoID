@@ -3,6 +3,6 @@ usage:  algodid <command>
 
     Supported commands:
 
-    > create: generates a new did for the given Algo address (if not associated with an existing did)
+    > create: generates a new Algorand address with a corresponding DID document
     > help: prints this command guide or a specific command guide if used with that command
     

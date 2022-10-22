@@ -1,7 +1,8 @@
 
-usage:  algodid create <address>
+usage:  algodid create <DID name>
 
+    Generates a new Algorand address with a corresponding DID document
     Examples:
 
-    > algodid create VCMJKWOY5P5P7SKMZFFOCEROPJCZOTIJMNIYNUCKH7LRO45JMJP6UYBIJA
+    > algodid create did_main
     
