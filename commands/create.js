@@ -101,22 +101,6 @@ const create = function(args, command) {
 
         console.log('\n'+name+" created!\n");
         console.log(did);
-
-        // TEST
-        let decWallet = JSON.parse(wallet);
-        let password = readLine.question('type password\n');
-        let passwordHash = crypto.pbkdf2Sync(password, decWallet.salt, 100000, 64, 'sha512');
-        const decKey = passwordHash.subarray(0, 32);
-        const decKeyTrace = hashSha256(passwordHash.subarray(32, 64).toString('hex'));
-
-        if(decWallet.keyTrace == decKeyTrace) {
-            const decWalletData = JSON.parse(aesDecrypt(decWallet.encWalletData, decKey, Buffer.from(walletIv, 'base64')).replace("^(?:\s*)(\w+)$"))
-            console.log(decWalletData);
-
-            const decAccount = aesDecrypt(decWalletData.encAccount, new Uint8Array(Buffer.from(decWalletData.aesKey, 'base64')), Buffer.from(decWalletData.iv, 'base64'));
-            console.log(decAccount);
-        }
-        else console.error("The passphrase provided is invalid");
     });
 }
 
