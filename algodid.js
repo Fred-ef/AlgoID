@@ -1,6 +1,14 @@
+const homedir = require('os').homedir();
+const fs = require('fs');
 const create = require('./commands/create');
 const commandHelp= require('./help/command-help');
 
+
+// ########## PRELIMINARY SETUP ##########
+
+// setting up working directory if it doesn't exist
+const dirpath = homedir+'/.algodid/';
+if(!fs.existsSync(dirpath)) fs.mkdirSync(dirpath);
 
 
 // ########## GLOBAL DATA ##########

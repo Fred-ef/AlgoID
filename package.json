@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "algosdk": "^1.22.0",
-    "n": "^9.0.0"
+    "bcrypt": "^5.1.0",
+    "crypto-js": "^4.1.1",
+    "did-jwt": "^6.9.0",
+    "readline-sync": "^1.4.10"
   },
   "name": "algodid",
   "description": "(TEMPORARY DEVELOPEMENT DESCRIPTION): DID method for the Algorand Blockchain based on W3C DID-specification and Algoand's TEAL Stateful Contracts",

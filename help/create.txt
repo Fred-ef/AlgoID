@@ -1,8 +1,8 @@
 
 usage:  algodid create <DID name>
 
-    Generates a new Algorand address with a corresponding DID document
+    Generates a new AlgoDID identity and stores it in a secure wallet
     Examples:
 
-    > algodid create did_main
+    > algodid create my_did
     

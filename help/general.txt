@@ -3,6 +3,6 @@ usage:  algodid <command>
 
     Supported commands:
 
-    > create: generates a new Algorand address with a corresponding DID document
-    > help: prints this command guide or a specific command guide if used with that command
+    > create: Generates a new AlgoDID identity and stores it in a secure wallet
+    > help: Prints this command guide or a specific command guide if used with that command
     

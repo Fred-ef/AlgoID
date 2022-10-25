@@ -8,7 +8,7 @@ const context = ['https://www.w3.org/ns/did/v1', "https://w3id.org/security/v1"]
 
 // ########## FUNCTION ##########
 
-const createDid = function(addr, pubKey) {
+const generateDid = function(addr, pubKey) {
     return {
         '@context': context,
         id: 'did:algo:'+addr,
@@ -26,4 +26,4 @@ const createDid = function(addr, pubKey) {
 }
 
 
-module.exports = createDid;
+module.exports = generateDid;
