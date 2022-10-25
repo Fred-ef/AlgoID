@@ -4,5 +4,6 @@ usage:  algodid <command>
     Supported commands:
 
     > create: Generates a new AlgoDID identity and stores it in a secure wallet
-    > help: Prints this command guide or a specific command guide if used with that command
+    > sign:   Signs binary data with the specified AlgoDID identity
+    > help:   Prints a guide for the command given
     

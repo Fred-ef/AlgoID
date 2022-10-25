@@ -104,5 +104,3 @@ dist
 .tern-port
 
 # Test files
-sign.js
-verify.js
