@@ -30,8 +30,10 @@ module.exports = {
         // ########## PASSPHRASE CREATION ##########
 
         // prompting the user to enter a passphrase
-        console.log('\nAlgoDID identities require a passphrase for security reasons.\nYou will need it to access the created identity.\n');
-        let passphrase = readLine.question('Please insert a passphrase.\n');
+        console.log('\nGenerating a credential wallet for the new DID.\
+        \nAlgoID wallets require a passphrase for security reasons.\
+        \nYou will need it to modify and update the newly created DID.\n');
+        let passphrase = readLine.question('Please insert a passphrase.\n> ');
 
 
         // ########## WALLET ENCRYPTION ##########
@@ -64,7 +66,7 @@ module.exports = {
 
     decryptWallet: function decryptWallet(encWallet) {
     // prompting the user to insert the passphrase related to the specified DID
-    let passphrase = readLine.question('Type the passphrase for the specified identity\n');
+    let passphrase = readLine.question('\nType the passphrase for the specified identity\n> ');
     let passphraseHash = crypto.pbkdf2Sync(passphrase, encWallet.salt, 100000, 64, 'sha512');
 
     // getting the Wallet key from the passphrase

@@ -7,6 +7,7 @@ const readLine = require('readline-sync');
 
 
 const commandHelp = require('../help/command-help');
+const { readlink } = require('fs');
 const validateFilename = require('../tools/validation').validateFilename;
 const decryptWallet = require('../tools/cryptography/wallet-security').decryptWallet;
 const loadWalletJson = require('../tools/wallet-storage').loadWalletJson;
@@ -14,7 +15,7 @@ const loadWalletJson = require('../tools/wallet-storage').loadWalletJson;
 
 
 // implements the "sign" command
-const sign = function sign(command, args) {
+const verify = function verify(command, args) {
 
     /*
     // command arguments validation
@@ -32,35 +33,22 @@ const sign = function sign(command, args) {
 
 
     // getting the wallet's name
-    const walletName = readLine.question('\nType the name of the AlgoID identity you want to sign with\n> ');
-    if(!validateFilename(walletName)) {
-        console.error("Invalid file name.");
-        process.exit(1);
-    }
-
-    // getting the encrypted wallet as a JSON object
-    let encWallet = loadWalletJson(walletName);
-
-    // retrieving the account data associated with the wallet
-    const account = decryptWallet(encWallet);
-    const key = Buffer.from(account.pk, 'base64');
-
-    // signing the input bytes
-    const binData = new TextEncoder().encode(readLine.question('\nType or paste the data you want to sign\n> '));
-    let timestamp = Date.now();
-    const signature = sdk.signBytes(binData, key);
-
-    console.log((Date.now() - timestamp)/1000);
-
-    // output the signature to the console
-    console.log("\nSignature created successfully.\nPrinting a base64-encoded dump of the signature...\n");
-    console.log(Buffer.from(signature).toString('base64'));
+    const binData = new TextEncoder().encode(readLine.question('\nType/paste the binary data you want to verify\n> '));
+    const signatureBase64 = readLine.question('\nType the signature you want to verify\n> ');
+    signature = new Uint8Array(Buffer.from(signatureBase64, 'base64url'));
+    const address = readLine.question('\nType the AlgoID identity you want to verify the signature against (without "did:algoid:")\n> ');
 
     console.log("binData:\n"+binData);
     console.log("signature:\n"+signature);
-    console.log("address:\n"+account.address);
-    console.log("converted signature:\n"+new Uint8Array(Buffer.from(Buffer.from(signature).toString('base64'), 'base64url')));
-    if(sdk.verifyBytes(binData, signature, account.address)) console.log("Verified");
+    console.log("address:\n"+address);
+
+    let timestamp = Date.now();
+
+    // E4TWJPWAQSIY7HF7ND45TMP7KTRAVS7WSWV7YX3QHJ5QMMSWXP67IR6WEQ
+    
+    if(sdk.verifyBytes(binData, signature, address)) console.log("The signature is valid\n");
+    else console.log("The signature is NOT valid");
+    console.log((Date.now() - timestamp)/1000);
 }
 
 
@@ -91,4 +79,4 @@ console.log(decodeJWT(jwt));
 console.log(jwt);
 */
 
-module.exports = sign;
+module.exports = verify;

@@ -2,7 +2,9 @@ const homedir = require('os').homedir();
 const fs = require('fs');
 const { argv } = require('process');
 const create = require('./commands/create');
-const sign = require('./commands/sign');
+const signBytes = require('./commands/sign');
+const verifyBytes = require('./commands/verify');
+const vc = require('./commands/vc');
 const commandHelp= require('./help/command-help');
 
 
@@ -38,7 +40,15 @@ const parseCommand = function() {
             break;
 
         case "sign":
-            sign(command, args);
+            signBytes(command, args);
+            break;
+
+        case "verify":
+            verifyBytes(command, args);
+            break;
+
+        case "vc":
+            vc(command, args);
             break;
         
         case "help":

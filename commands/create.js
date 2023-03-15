@@ -1,6 +1,7 @@
 // command-route for did creation
 
 const sdk = require('algosdk');
+const readLine = require('readline-sync');
 
 const generateDid = require('../tools/did-management/generate_did');
 const commandHelp = require('../help/command-help');
@@ -15,6 +16,7 @@ const create = function(command, args) {
 
     // ########## ACCOUNT GENERATION ##########
 
+    /* 
     // command arguments validation
     if(args.length == 0) {
         commandHelp("You have to provide a name for the new AlgoDID identity", command);
@@ -23,11 +25,13 @@ const create = function(command, args) {
         commandHelp("Too many arguments", command);
         process.exit(1);
     }
+    */
 
     // getting did's name
-    const name = args[0];
+    const name = readLine.question('You have chosen to create a new DID\
+        \nInsert a name for the new AlgoID identity\n> ');
     if(checkWalletDuplicate(name)) {
-        console.error("\nThe name provided is already associated with another AlgoDID identity\n");
+        console.error("\nThe name provided is already associated with another of your AlgoID identities\n");
         process.exit(1);
     }
 
@@ -38,9 +42,9 @@ const create = function(command, args) {
     // ########## SAVING WALLET IN LOCAL STORAGE ##########
     storeWalletJson(wallet, name);
 
-    console.log('New identity "'+name+'" successfully created.');
-    console.log('Your new AlgoDID identifier is: '+account.addr);
-    console.log("Use the \"list\" command to show all existing AlgoDID identities");
+    console.log('\nNew identity "'+name+'" successfully created.');
+    console.log('Your new AlgoID identifier is: '+account.addr);
+    console.log("Use the \"list\" command to show all existing AlgoID identities");
 
     let did = generateDid(account.addr);
 
